@@ -1,47 +1,58 @@
----
-# Page meta info, like heading, footer text and nav links
+# 页面基础信息
 pageInfo:
-  title: Dashy
-  description: Welcome to your new dashboard!
+  title: 我的个人备忘录
+  description: 技术笔记 & 日常待办
   navLinks:
-  - title: GitHub
-    path: https://github.com/Lissy93/dashy
-  - title: Documentation
-    path: https://dashy.to/docs
-
-# Optional app settings and configuration
+    - title: 首页
+      path: /
+    - title: 技术笔记
+      path: /tech-notes
+    - title: 日常待办
+      path: /todo
+# 全局应用配置
 appConfig:
-  theme: colorful
-
-# Main content - An array of sections, each containing an array of items
+  theme: dark-forest # 主题（可选：default、dark、synthwave 等）
+  language: zh-CN # 中文
+  layout: auto # 自动布局
+  iconSize: medium # 图标大小
+# 核心：备忘录/导航分区
 sections:
-- name: Getting Started
-  icon: fas fa-rocket
-  items:
-  - title: Dashy Live
-    description: Development a project management links for Dashy
-    icon: https://i.ibb.co/qWWpD0v/astro-dab-128.png
-    url: https://live.dashy.to/
-    target: newtab
-  - title: GitHub
-    description: Source Code, Issues and Pull Requests
-    url: https://github.com/lissy93/dashy
-    icon: favicon
-  - title: Docs
-    description: Configuring & Usage Documentation
-    provider: Dashy.to
-    icon: far fa-book
-    url: https://dashy.to/docs
-  - title: Showcase
-    description: See how others are using Dashy
-    url: https://github.com/Lissy93/dashy/blob/master/docs/showcase.md
-    icon: far fa-grin-hearts
-  - title: Config Guide
-    description: See full list of configuration options
-    url: https://github.com/Lissy93/dashy/blob/master/docs/configuring.md
-    icon: fas fa-wrench
-  - title: Support
-    description: Get help with Dashy, raise a bug, or get in contact
-    url: https://github.com/Lissy93/dashy/blob/master/.github/SUPPORT.md
-    icon: far fa-hands-helping
-  
+  - name: 今日待办
+    icon: fas fa-list-check
+    items:
+      - name: 学习 Cloudflare Pages
+        description: 完成 Dashy 部署文档
+        icon: fas fa-cloud
+        target: _self # 本窗口打开
+      - name: 整理 Vue 笔记
+        description: 组件通信 & 生命周期
+        icon: fab fa-vuejs
+  - name: 技术文档收藏
+    icon: fas fa-book
+    items:
+      - name: Dashy 官方文档
+        url: https://dashy.to/docs
+        icon: fas fa-book-open
+      - name: Cloudflare Pages 文档
+        url: https://developers.cloudflare.com/pages/
+        icon: fas fa-cloudflare
+# 多页面配置（可选，实现备忘录分栏）
+pages:
+  - name: 技术笔记
+    icon: fas fa-code
+    path: /tech-notes
+    sections:
+      - name: JavaScript 知识点
+        items:
+          - name: ES6 语法
+            url: https://es6.ruanyifeng.com/
+            icon: fab fa-js
+  - name: 日常待办
+    icon: fas fa-clipboard-check
+    path: /todo
+    sections:
+      - name: 生活琐事
+        items:
+          - name: 买牛奶
+            description: 超市生鲜区
+            icon: fas fa-shopping-cart
